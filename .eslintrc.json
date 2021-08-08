@@ -3,8 +3,8 @@
   "plugins": ["prettier"],
   "rules": {
     "prettier/prettier": "warn",
-    "no-undef": "warn",
+    "no-undef": "off",
     "react/jsx-filename-extension": "off",
-    "no-unused-vars": "warn"
+    "no-unused-vars": "off"
   }
 }
