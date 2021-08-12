@@ -1,10 +1,11 @@
 import './css/App.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const App = () => {
   const [array, setArray] = useState([]);
   const [search, setSearch] = useState('');
   const [suggestions, setSuggestions] = useState([]);
+  const wrapperRef = useRef(null);
 
   useEffect(() => {
     fetch('https://pokeapi.co/api/v2/pokemon/?limit=151/').then((response) =>
@@ -30,8 +31,22 @@ const App = () => {
     handleSearch();
   }, [search]);
 
+  const handleClickOutside = (e) => {
+    if (wrapperRef.current && !wrapperRef.current.contains(e.target)) {
+      setSearch('');
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      window.removeEventListener('mousedown', handleClickOutside);
+    };
+  });
+
   return (
-    <div className='container'>
+    <div ref={wrapperRef} className='container'>
       <input
         className='search'
         type='text'
