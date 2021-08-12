@@ -5,6 +5,8 @@
     "prettier/prettier": "warn",
     "no-undef": "off",
     "react/jsx-filename-extension": "off",
-    "no-unused-vars": "off"
+    "no-unused-vars": "off",
+    "prefer-const": "warn",
+    "arrow-body-style": "off"
   }
 }
