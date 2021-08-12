@@ -35,11 +35,19 @@ const App = () => {
       <input
         className='search'
         type='text'
+        placeholder='Search for a pokemon...'
         value={search}
         onChange={(e) => {
           setSearch(e.target.value);
         }}
       />
+      {suggestions.length !== 0 && (
+        <div className='results'>
+          {suggestions.slice(0, 15).map((value, key) => {
+            return <p className='result-item'>{value.name}</p>;
+          })}
+        </div>
+      )}
     </div>
   );
 };
